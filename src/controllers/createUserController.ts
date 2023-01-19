@@ -16,7 +16,7 @@ export async function registerUserController(req: Request, res: Response) {
   });
 
   try {
-    return res.json({ user });
+    return res.status(201).json({ message: "Usuário criado com sucesso" });
   } catch (error) {
     return res.status(401).json({ error });
   }
