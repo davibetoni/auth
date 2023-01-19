@@ -1,6 +1,7 @@
 import Sequelize, { Model } from "sequelize";
 import { sequelize } from "../database";
 import { randomUUID as uuid } from "node:crypto";
+import { hashSync } from "bcrypt";
 
 interface CreateUserAttributes {
   name: string;
@@ -59,4 +60,5 @@ User.init(
 
 User.beforeCreate((user) => {
   user.id = uuid();
+  user.password = hashSync(user.password, 12)
 });
