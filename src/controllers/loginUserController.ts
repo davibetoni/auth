@@ -11,8 +11,5 @@ export async function loginUserController(req: Request, res: Response) {
     expiresIn: 60 * 60,
   });
 
-  res.send({
-    message: "success",
-    token: accessToken,
-  });
+  res.send({ message: "success", token: accessToken });
 }
