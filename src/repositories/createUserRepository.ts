@@ -18,7 +18,7 @@ export async function createUserRepository(
   const user = await User.findOne({ where: { email } });
 
   if (user) {
-    return res.status(401).json({ message: "Email already in use." });
+    return res.status(400).json({ message: "Email already in use." });
   }
 
   const newUser = User.build(params);

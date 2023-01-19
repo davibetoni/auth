@@ -7,7 +7,7 @@ export async function registerUserController(req: Request, res: Response) {
 
   const passwordCrypt = bcrypt.hashSync(password, 12);
 
-  const user = await createUserRepository(res, {
+  await createUserRepository(res, {
     name,
     password: passwordCrypt,
     email,
