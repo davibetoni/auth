@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { MysqlUserRepository } from "../../repositories/implementation/MysqlUserRepository";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export class CreateUserController {
