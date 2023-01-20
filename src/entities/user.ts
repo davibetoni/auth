@@ -41,7 +41,7 @@ User.init(
     },
     role: {
       type: Sequelize.ENUM,
-      values: ["customer", "admin"],
+      values: ["customer", "admin", "manager"],
     },
     email: {
       type: Sequelize.STRING,

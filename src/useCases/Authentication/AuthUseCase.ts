@@ -21,8 +21,7 @@ export class AuthUseCase {
       throw new Error("Unauthenticated");
     }
 
-    const { name, role } = user;
-
-    return { name, role };
+    const { id, name, role } = user;
+    return { id, name, role };
   }
 }

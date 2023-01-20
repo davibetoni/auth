@@ -10,7 +10,7 @@ export class AuthController {
     try {
       const user = await this.authUseCase.execute({ token });
 
-      res.json({ user });
+      res.json({ userAttributes: user });
     } catch (error) {
       throw new Error(error);
     }
