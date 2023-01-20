@@ -2,6 +2,7 @@ import Sequelize, { Model } from "sequelize";
 import { sequelize } from "../database";
 import { randomUUID as uuid } from "node:crypto";
 import { hashSync } from "bcrypt";
+import { EnumType } from "typescript";
 
 interface CreateUserAttributes {
   name: string;
@@ -13,6 +14,7 @@ interface CreateUserAttributes {
 
 interface UserAttributes extends CreateUserAttributes {
   id: string;
+  role: EnumType;
 }
 
 export class User
@@ -20,6 +22,7 @@ export class User
   implements UserAttributes
 {
   id!: string;
+  role!: EnumType;
   password!: string;
   name!: string;
   email!: string;
@@ -36,9 +39,13 @@ User.init(
     name: {
       type: Sequelize.STRING,
     },
+    role: {
+      type: Sequelize.ENUM,
+      values: ["customer", "admin"],
+    },
     email: {
       type: Sequelize.STRING,
-      unique: true
+      unique: true,
     },
     password: {
       type: Sequelize.STRING,
@@ -60,5 +67,5 @@ User.init(
 
 User.beforeCreate((user) => {
   user.id = uuid();
-  user.password = hashSync(user.password, 12)
+  user.password = hashSync(user.password, 12);
 });

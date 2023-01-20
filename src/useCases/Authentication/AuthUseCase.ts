@@ -20,5 +20,9 @@ export class AuthUseCase {
     if (!user) {
       throw new Error("Unauthenticated");
     }
+
+    const { name, role } = user;
+
+    return { name, role };
   }
 }

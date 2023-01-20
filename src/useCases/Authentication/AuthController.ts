@@ -8,9 +8,9 @@ export class AuthController {
     const { token } = req.body;
 
     try {
-      await this.authUseCase.execute({ token });
+      const user = await this.authUseCase.execute({ token });
 
-      res.json({ message: "Authenticated" });
+      res.json({ user });
     } catch (error) {
       throw new Error(error);
     }
